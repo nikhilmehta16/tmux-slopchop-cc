@@ -1,0 +1,24 @@
+{
+  "name": "slopchop-cc",
+  "version": "0.1.0",
+  "description": "Standalone fork of pi-slopchop that stages diff-review annotations into a Claude Code pane via tmux.",
+  "type": "module",
+  "bin": {
+    "slopchop-cc": "dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@earendil-works/pi-tui": "*",
+    "@pierre/diffs": "*"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "typescript": "*"
+  }
+}
