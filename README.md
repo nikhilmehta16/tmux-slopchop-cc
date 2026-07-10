@@ -10,6 +10,8 @@ input** via tmux — pasted, not sent, so you review it and press Enter yourself
 > Rob Zolkos. Same review UI; the backend was swapped from the Pi agent's editor to a
 > tmux paste bridge so it works with Claude Code. See [Attribution](#attribution).
 
+![tmux-slopchop-cc demo](assets/demo.gif)
+
 ## Why
 Claude Code is great at *doing* work but reviewing its diff in a chat scrollback is
 clunky. This gives you a real review surface: navigate by hunk, drop line-anchored
