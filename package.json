@@ -1,7 +1,7 @@
 {
-  "name": "slopchop-cc",
+  "name": "tmux-slopchop-cc",
   "version": "0.1.0",
-  "description": "Standalone fork of pi-slopchop that stages diff-review annotations into a Claude Code pane via tmux.",
+  "description": "Terminal diff-review TUI for Claude Code. Annotate a git diff with FIX/DISCUSS, and stage the prompt into your Claude Code pane via tmux. A standalone fork of pi-slopchop.",
   "type": "module",
   "bin": {
     "slopchop-cc": "dist/bin.js"
@@ -12,13 +12,34 @@
   "scripts": {
     "build": "tsc"
   },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "code-review",
+    "diff",
+    "tmux",
+    "tui",
+    "terminal"
+  ],
+  "author": "Nikhil Mehta",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilmehta16/tmux-slopchop-cc.git"
+  },
+  "homepage": "https://github.com/nikhilmehta16/tmux-slopchop-cc#readme",
+  "bugs": {
+    "url": "https://github.com/nikhilmehta16/tmux-slopchop-cc/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
-    "@earendil-works/pi-tui": "*",
-    "@pierre/diffs": "*"
+    "@earendil-works/pi-tui": "^0.80.3",
+    "@pierre/diffs": "^1.2.12"
   },
   "devDependencies": {
-    "@types/node": "*",
-    "typescript": "*"
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
   }
 }
