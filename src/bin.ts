@@ -36,6 +36,10 @@ function logStatus(message: string): void {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  // The tmux popup binding can't expand #{pane_id} inside its -E command (the
+  // popup has no pane context), so it stashes the caller's pane id in the
+  // SLOPCHOP_TARGET env var, which the popup process inherits. --target wins.
+  const target = options.target ?? (process.env.SLOPCHOP_TARGET || undefined);
   const pi = createPiExec();
   const cwd = process.cwd();
 
@@ -44,7 +48,7 @@ async function main(): Promise<void> {
 
   if (files.length === 0) {
     logStatus("No reviewable files found for git diff, last commit, or all files.");
-    process.exit(0);
+    process.exit(2);
   }
 
   for (const warning of shortcutConfig.warnings) {
@@ -75,9 +79,9 @@ async function main(): Promise<void> {
   if (options.clipboard) {
     await copyToClipboard(prompt);
     logStatus("Copied review feedback to clipboard.");
-  } else if (options.target != null) {
-    await stageIntoPane(options.target, prompt);
-    logStatus(`Staged review feedback into pane ${options.target}.`);
+  } else if (target != null && target !== "") {
+    await stageIntoPane(target, prompt);
+    logStatus(`Staged review feedback into pane ${target}.`);
   } else {
     process.stdout.write(prompt);
     if (!prompt.endsWith("\n")) process.stdout.write("\n");
